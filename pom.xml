@@ -7,7 +7,12 @@
   <version>1.0-SNAPSHOT</version>
   <name>exclusion-service Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
+
+    <build>
+        <finalName>exclusion-service</finalName>
+    </build>
+
+    <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -15,7 +20,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>exclusion-service</finalName>
-  </build>
+
 </project>
