@@ -10,6 +10,7 @@
 
     <properties>
         <jedis.version>2.9.0</jedis.version>
+        <slf4j.api.version>1.7.25</slf4j.api.version>
     </properties>
 
     <dependencies>
@@ -24,6 +25,12 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.api.version}</version>
         </dependency>
 
         <dependency>
