@@ -8,12 +8,22 @@
     <name>exclusion-service Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+    <properties>
+        <jedis.version>2.9.0</jedis.version>
+    </properties>
+
     <dependencies>
 
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-servlet</artifactId>
             <version>1.19.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
 
         <dependency>
