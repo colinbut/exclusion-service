@@ -5,8 +5,10 @@ A microservice that encapsulates a blacklist of excluded users.
 to run:
 
 ```bash
-mvn -Djetty.port=[port number] jetty:run
+mvn -Djetty.http.port=[port number] jetty:run
 ```
+
+where port number is a port you specify (by default its on port 1234 if you don't specify)
 
 Built with:
 
