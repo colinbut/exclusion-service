@@ -20,3 +20,11 @@ Built with:
 Maven build tool. 
 
 Application is packaged up in a war file which then gets run in Jetty by using the maven jetty plugin.
+
+
+Built using vanilla Java with Java EE (J2EE)'s JAX-RS technology - using the reference implementation Jersey. It runs inside a Jetty server (a lightweight web container/server). Application connects to
+Redis datastore (NoSQL)
+
+Below:
+
+![Image of technology diagram](etc/diagram.png)
