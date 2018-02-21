@@ -45,7 +45,7 @@ public class ExclusionService {
 
         String dob = jedis.hget("blacklist", ssn);
 
-        if (dob.equals(dateOfBirth)) {
+        if (dateOfBirth.equals(dob)) {
             blackListed = true;
             LOG.info("SSN={} with DOB={} is blacklisted");
         }
