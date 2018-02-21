@@ -152,13 +152,6 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.mycompany.exclusion.service.ExclusionServer</mainClass>
                                 </transformer>
-                                <!--<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">-->
-                                    <!--<resource>META-INF/spring.handlers</resource>-->
-                                <!--</transformer>-->
-                                <!--&lt;!&ndash; the following not really needed &ndash;&gt;-->
-                                <!--<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">-->
-                                    <!--<resource>META-INF/spring.schemas</resource>-->
-                                <!--</transformer>-->
                             </transformers>
                         </configuration>
                     </execution>
