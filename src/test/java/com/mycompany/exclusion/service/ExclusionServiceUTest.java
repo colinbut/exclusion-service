@@ -33,8 +33,32 @@ public class ExclusionServiceUTest {
     }
 
     @Test
+    public void testEmptySSNParameterSupplied() {
+        Response response = classInTest.validate("", "2018-01-30");
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void testWhitespaceSSNParameterSupplied() {
+        Response response = classInTest.validate("  ", "2018-01-30");
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+    }
+
+    @Test
     public void testNullDateOfBirthParameterSupplied() {
         Response response = classInTest.validate("###-0000-###-001", null);
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void testEmptyDateOfBirthParameterSupplied() {
+        Response response = classInTest.validate("###-0000-###-001", "");
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void testWhitespaceDateOfBirthParameterSupplied() {
+        Response response = classInTest.validate("###-0000-###-001", "   ");
         assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
     }
 
