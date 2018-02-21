@@ -25,8 +25,6 @@ public class ExclusionService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ExclusionService.class);
 
-    private Jedis jedis = new Jedis();
-
     /**
      * validates a user against a black list using date of birth and social security number as an identifier
      *
@@ -47,6 +45,7 @@ public class ExclusionService {
 
         boolean blackListed = false;
 
+        Jedis jedis = new Jedis();
         String dob = jedis.hget("blacklist", ssn);
 
         if (dateOfBirth.equals(dob)) {
