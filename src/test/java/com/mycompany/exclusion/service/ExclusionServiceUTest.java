@@ -8,16 +8,20 @@ package com.mycompany.exclusion.service;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import redis.clients.jedis.Jedis;
 
 import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ParameterValidator.class})
 public class ExclusionServiceUTest {
 
     @Mock
@@ -28,7 +32,11 @@ public class ExclusionServiceUTest {
 
     @Test
     public void testInvalidParametersSupplied() {
-        Response response = classInTest.validate("", "");
+
+        PowerMockito.mockStatic(ParameterValidator.class);
+        PowerMockito.when(ParameterValidator.isValidParameters(Matchers.anyString(), Matchers.anyString())).thenReturn(false);
+
+        Response response = classInTest.validate("ssn", "dob");
         assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
     }
 
@@ -37,6 +45,9 @@ public class ExclusionServiceUTest {
 
         String ssn = "###-0000-###-0001";
         String dob = "2018-01-30";
+
+        PowerMockito.mockStatic(ParameterValidator.class);
+        PowerMockito.when(ParameterValidator.isValidParameters(Matchers.anyString(), Matchers.anyString())).thenReturn(true);
 
         Mockito.when(jedis.hget("blacklist", ssn)).thenReturn(dob);
 
@@ -50,6 +61,9 @@ public class ExclusionServiceUTest {
     public void testValidateWithNonBlacklistedSsnAndDobShouldReturnNonBlacklistedResponse() {
         String ssn = "###-0000-###-0002";
         String dob = "2018-01-30";
+
+        PowerMockito.mockStatic(ParameterValidator.class);
+        PowerMockito.when(ParameterValidator.isValidParameters(Matchers.anyString(), Matchers.anyString())).thenReturn(true);
 
         Mockito.when(jedis.hget("blacklist", ssn)).thenReturn(dob);
 
