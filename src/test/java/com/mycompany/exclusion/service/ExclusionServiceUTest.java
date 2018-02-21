@@ -27,6 +27,18 @@ public class ExclusionServiceUTest {
     private ExclusionService classInTest = new ExclusionService();
 
     @Test
+    public void testNullSSNParameterSupplied() {
+        Response response = classInTest.validate(null, "2018-01-30");
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void testNullDateOfBirthParameterSupplied() {
+        Response response = classInTest.validate("###-0000-###-001", null);
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+    }
+
+    @Test
     public void testValidateWithBlacklistedSsnAndDobShouldReturnBlacklistedResponse() {
 
         String ssn = "###-0000-###-0001";

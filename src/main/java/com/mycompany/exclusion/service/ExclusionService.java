@@ -39,6 +39,10 @@ public class ExclusionService {
     @Path("/validate/{ssn}/{dob}")
     public Response validate(@PathParam("ssn") String ssn, @PathParam("dob") String dateOfBirth) {
 
+        if (ssn == null || dateOfBirth == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
         LOG.info("Validating whether SSN={} with DOB={} is blacklisted", ssn, dateOfBirth);
 
         boolean blackListed = false;
