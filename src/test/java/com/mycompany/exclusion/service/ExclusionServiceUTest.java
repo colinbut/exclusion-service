@@ -27,38 +27,8 @@ public class ExclusionServiceUTest {
     private ExclusionService classInTest = new ExclusionService();
 
     @Test
-    public void testNullSSNParameterSupplied() {
-        Response response = classInTest.validate(null, "2018-01-30");
-        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
-    }
-
-    @Test
-    public void testEmptySSNParameterSupplied() {
-        Response response = classInTest.validate("", "2018-01-30");
-        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
-    }
-
-    @Test
-    public void testWhitespaceSSNParameterSupplied() {
-        Response response = classInTest.validate("  ", "2018-01-30");
-        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
-    }
-
-    @Test
-    public void testNullDateOfBirthParameterSupplied() {
-        Response response = classInTest.validate("###-0000-###-001", null);
-        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
-    }
-
-    @Test
-    public void testEmptyDateOfBirthParameterSupplied() {
-        Response response = classInTest.validate("###-0000-###-001", "");
-        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
-    }
-
-    @Test
-    public void testWhitespaceDateOfBirthParameterSupplied() {
-        Response response = classInTest.validate("###-0000-###-001", "   ");
+    public void testInvalidParametersSupplied() {
+        Response response = classInTest.validate("", "");
         assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
     }
 

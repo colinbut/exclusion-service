@@ -5,7 +5,6 @@
  */
 package com.mycompany.exclusion.service;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
@@ -40,7 +39,7 @@ public class ExclusionService {
     @Path("/validate/{ssn}/{dob}")
     public Response validate(@PathParam("ssn") String ssn, @PathParam("dob") String dateOfBirth) {
 
-        if (StringUtils.isBlank(ssn) || StringUtils.isBlank(dateOfBirth)) {
+        if (isNotValidParameters(ssn, dateOfBirth)) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -61,6 +60,10 @@ public class ExclusionService {
         Response notBlackListedResponse = Response.status(200).entity("NOT BLACKLISTED").build();
 
         return blackListed ? blackListedResponse : notBlackListedResponse;
+    }
+
+    private boolean isNotValidParameters(String ssn, String dateOfBirth) {
+        return !ParameterValidator.isValidParameters(ssn, dateOfBirth);
     }
 
 }
