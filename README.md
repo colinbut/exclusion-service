@@ -1,5 +1,7 @@
 # Exclusion Service
 
+[![Build Status](https://travis-ci.org/colinbut/exclusion-service.svg?branch=master)](https://travis-ci.org/colinbut/exclusion-service)
+
 A microservice that encapsulates a blacklist of excluded users.
 
 to run:
