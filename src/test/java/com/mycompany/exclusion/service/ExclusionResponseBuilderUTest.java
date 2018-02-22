@@ -18,7 +18,7 @@ public class ExclusionResponseBuilderUTest {
         Response response = ExclusionResponseBuilder.buildBlackListedResponse();
 
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
-        assertEquals(ExclusionResponseBuilder.BLACKLISTED_DESCRIPTION,
+        assertEquals(ExclusionStatusDescriptionConstant.BLACKLISTED_DESCRIPTION,
             ((ExclusionResource) response.getEntity()).getStatusDescription());
     }
 
@@ -27,7 +27,7 @@ public class ExclusionResponseBuilderUTest {
         Response response = ExclusionResponseBuilder.buildNotBlackListedResponse();
 
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
-        assertEquals(ExclusionResponseBuilder.NOT_BLACKLISTED_DESCRIPTION,
+        assertEquals(ExclusionStatusDescriptionConstant.NOT_BLACKLISTED_DESCRIPTION,
             ((ExclusionResource) response.getEntity()).getStatusDescription());
     }
 
