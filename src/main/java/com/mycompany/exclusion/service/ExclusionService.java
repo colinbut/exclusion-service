@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -24,6 +26,20 @@ import javax.ws.rs.core.Response;
 public class ExclusionService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ExclusionService.class);
+
+    private Jedis jedis;
+
+    @PostConstruct
+    private void setUp(){
+        jedis = new Jedis();
+    }
+
+    @PreDestroy
+    private void tearDown() {
+        if (jedis.isConnected()) {
+            jedis.close();
+        }
+    }
 
     /**
      * validates a user against a black list using date of birth and social security number as an identifier
@@ -45,15 +61,12 @@ public class ExclusionService {
 
         boolean blackListed = false;
 
-        Jedis jedis = new Jedis();
         String dob = jedis.hget("blacklist", ssn);
 
         if (dateOfBirth.equals(dob)) {
             blackListed = true;
             LOG.info("SSN={} with DOB={} is blacklisted");
         }
-
-        jedis.close();
 
         Response blackListedResponse = Response.status(200).entity("BLACKLISTED").build();
         Response notBlackListedResponse = Response.status(200).entity("NOT BLACKLISTED").build();
