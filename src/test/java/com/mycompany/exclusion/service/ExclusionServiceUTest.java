@@ -54,7 +54,7 @@ public class ExclusionServiceUTest {
         Response response = classInTest.validate(ssn, "2018-01-30");
 
         assertEquals(200, response.getStatus());
-        assertEquals("BLACKLISTED", response.getEntity());
+        assertEquals("BLACKLISTED", ((ExclusionResource)response.getEntity()).getStatusDescription());
     }
 
     @Test
@@ -70,6 +70,6 @@ public class ExclusionServiceUTest {
         Response response = classInTest.validate(ssn, "2018-02-30");
 
         assertEquals(200, response.getStatus());
-        assertEquals("NOT BLACKLISTED", response.getEntity());
+        assertEquals("NOT BLACKLISTED", ((ExclusionResource)response.getEntity()).getStatusDescription());
     }
 }
