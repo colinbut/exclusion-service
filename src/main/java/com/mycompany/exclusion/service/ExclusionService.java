@@ -68,10 +68,8 @@ public class ExclusionService {
             LOG.info("SSN={} with DOB={} is blacklisted");
         }
 
-        Response blackListedResponse = Response.status(200).entity("BLACKLISTED").build();
-        Response notBlackListedResponse = Response.status(200).entity("NOT BLACKLISTED").build();
-
-        return blackListed ? blackListedResponse : notBlackListedResponse;
+        return blackListed ? ExclusionResponseBuilder.buildBlackListedResponse()
+            : ExclusionResponseBuilder.buildNotBlackListedResponse();
     }
 
     private boolean isNotValidParameters(String ssn, String dateOfBirth) {
