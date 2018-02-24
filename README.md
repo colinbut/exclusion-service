@@ -15,6 +15,7 @@ where port number is a port you specify (by default its on port 1234 if you don'
 Built with:
 
 - Java 7
+- JAXB
 - JAX-RS (Jersey as the implementation)
 - Jedis (a Redis client java library)
 - Jetty (a lightweight web server/container)
