@@ -31,13 +31,21 @@ public class ExclusionService {
 
     @PostConstruct
     private void setUp(){
-        jedis = new Jedis();
+        String host = System.getenv("REDIS_HOST");
+        String port = System.getenv("REDIS_PORT");
+
+        LOG.info("Connecting to Redis host={} on port={}", host, port);
+
+        jedis = new Jedis(host, Integer.parseInt(port));
     }
 
     @PreDestroy
     private void tearDown() {
         if (jedis.isConnected()) {
+            LOG.info("Destroying Jedis: Closing Jedis client resource");
             jedis.close();
+        } else {
+            LOG.info("Destroying Jedis: Jedis client is not connected to Redis Server");
         }
     }
 

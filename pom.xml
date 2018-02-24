@@ -116,6 +116,10 @@
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
+                    <env>
+                        <REDIS_HOST>127.0.0.1</REDIS_HOST>
+                        <REDIS_PORT>6379</REDIS_PORT>
+                    </env>
                     <jettyXml>src/main/resources/jetty.xml</jettyXml>
                 </configuration>
             </plugin>
