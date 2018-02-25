@@ -9,6 +9,7 @@
 *.project
 *.classpath
 *.iml
+*.war
 
 
 .settings/*
