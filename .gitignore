@@ -12,6 +12,7 @@
 *.war
 *.jar
 *.tar
+*.gz
 
 
 .settings/*
