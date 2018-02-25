@@ -131,8 +131,6 @@
                     <jettyXml>src/main/resources/jetty.xml</jettyXml>
                 </configuration>
             </plugin>
-
-
         </plugins>
     </build>
 
