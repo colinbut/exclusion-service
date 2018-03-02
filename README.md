@@ -31,3 +31,21 @@ Redis datastore (NoSQL)
 Below:
 
 ![Image of technology diagram](etc/diagram.png)
+
+
+### Usage
+
+Hit the endpoint URL:
+
+```
+http://localhost:8080/rest/exclusion/validate/1234566SSN/2018-01-01
+```
+
+You should get back a response like:
+
+```xml
+<EXCLUSION-RESOURCE>
+    <STATUS-DESCRIPTION>NOT BLACKLISTED</STATUS-DESCRIPTION>
+</EXCLUSION-RESOURCE>
+```
+
