@@ -47,7 +47,6 @@
             <version>${slf4j-log4j12.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -71,7 +70,6 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jetty.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>junit</groupId>
